@@ -1,14 +1,14 @@
 #! /bin/bash -x
 echo "WELCOME TO EMPLOYEE WAGE COMPUTATION"
 
-isPresent=1;
+
 empWagePerHr=20
-randomCheck=$(( RANDOM%2 ))
+numbWorkingDays=20
 salary=0
 isFullTime=1
 isPartTime=2
-if [ $isPresent -eq $randomCheck ]
-then
+for (( day=1; day<=$numbWorkingDays; day++ ))
+do
 randCheck=$((RANDOM%3))
 case $randCheck in
         $isFullTime)
@@ -21,6 +21,6 @@ case $randCheck in
                 empHr=0
         ;;
 esac
-fi
+done
 salary=$(( $empHr * $empWagePerHr))
 echo $salary
