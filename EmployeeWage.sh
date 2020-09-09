@@ -31,12 +31,13 @@ function getWorkingDays
 }
 while [[ $totalEmpHrs -lt $MAX_HRS && $totalWorkingDays -lt $MAX_WORKING_DAYS  ]]
 do
-	((totalWorkingDays++))
-	randomCheck=$((RANDOM%3))
-	empHr="$( getWorkingDays $randomCheck )"	
-	totalEmpHrs=$(($totalEmpHrs + $empHr))
+        ((totalWorkingDays++))
+        randomCheck=$((RANDOM%3))
+        empHr="$( getWorkingDays $randomCheck )"
+	dailyWage=$(($empHr * $empWagePerHr))
+	dailyWageArray[$totalWorkingDays]=$dailyWage
+        totalEmpHrs=$(($totalEmpHrs + $empHr))
 done
 totalsalary=$(($totalEmpHrs * $empWagePerHr))
-echo "total Employee hours" $totalEmpHrs
-echo "total salary" $totalsalary
-
+echo "dailyWage array elements:" ${dailyWageArray[@]}
+echo "dailyWage index positions for array:" ${!dailyWageArray[@]}
