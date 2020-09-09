@@ -11,7 +11,7 @@ if [ $isPresent -eq $randomCheck ]
 then
 randCheck=$((RANDOM%3))
 case $randCheck in
-        $isFulltime)
+        $isFullTime)
                 empHr=8
         ;;
         $isPartTime)
